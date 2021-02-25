@@ -1,0 +1,10 @@
+.movies {
+	display: flex;
+	flex-wrap: wrap;
+	margin: 0 auto;
+	max-width: 1600px;
+}
+.item {
+	flex-basis: calc(25% - 40px);
+	margin: 0 20px 68px;
+}
