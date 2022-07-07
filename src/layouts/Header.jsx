@@ -1,15 +1,20 @@
-function Header(){
-return (
-   <nav>
-    <div className="nav-wrapper">
-      <a href="#" className="brand-logo">Logo</a>
-      <ul id="nav-mobile" className="right hide-on-med-and-down">
-        <li><a href="sass.html">Sass</a></li>
-        <li><a href="badges.html">Components</a></li>
-        <li><a href="collapsible.html">JavaScript</a></li>
-      </ul>
-    </div>
-  </nav>
-)
+function Header() {
+	return (
+		<nav className='header teal'>
+			<div className='nav-wrapper'>
+				<div className='brand-logo'>Movies</div>
+				<ul id='nav-mobile' className='right hide-on-med-and-down'>
+					<li>
+						<a
+							target='_blank'
+							rel='noreferrer'
+							href='https://github.com/seriiserii825/rc-movies'>
+							Repo
+						</a>
+					</li>
+				</ul>
+			</div>
+		</nav>
+	);
 }
-export {Header}
+export { Header };
