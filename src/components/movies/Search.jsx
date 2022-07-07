@@ -17,15 +17,28 @@ class Search extends React.Component {
 	render() {
 		return (
 			<div className='input-field'>
-				<h3>{this.state.sticky}</h3>
-				<input
-					placeholder='Search...'
-					value={this.state.search}
-					type='text'
-					className='validate'
-					onChange={(e) => this.setState({ search: e.target.value })}
-					onKeyDown={(e) => this.handleKey(e)}
-				/>
+				<div className='row'>
+					<h3>{this.state.sticky}</h3>
+				</div>
+				<div className='row'>
+					<input
+						placeholder='Search...'
+						value={this.state.search}
+						type='text'
+						className='validate col s10'
+						onChange={(e) =>
+							this.setState({ search: e.target.value })
+						}
+						onKeyDown={(e) => this.handleKey(e)}
+					/>
+					<button
+						className='btn col s2'
+						onClick={() =>
+							this.props.searchMovies(this.state.search)
+						}>
+						Search
+					</button>
+				</div>
 			</div>
 		);
 	}
