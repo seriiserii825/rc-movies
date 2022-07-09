@@ -7,10 +7,12 @@ function Movie(props) {
 		Poster: poster,
 	} = props;
 
+	const image_url = poster !== 'N/A' ? poster : 'https://unsplash.it/800/800';
+
 	return (
 		<div className='card'>
 			<div className='card-image'>
-				<img src={poster} alt='' />
+				<img src={image_url} alt='' />
 				<span className='card-title'>{title}</span>
 			</div>
 			<div className='card-content'>

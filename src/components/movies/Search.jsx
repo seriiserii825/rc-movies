@@ -55,7 +55,7 @@ class Search extends React.Component {
 				<div className='row filter'>
 					<label>
 						<input
-							class='with-gap'
+							className='with-gap'
 							name='type'
 							type='radio'
 							data-type='all'
@@ -66,7 +66,7 @@ class Search extends React.Component {
 					</label>
 					<label>
 						<input
-							class='with-gap'
+							className='with-gap'
 							name='type'
 							type='radio'
 							data-type='movie'
@@ -77,7 +77,7 @@ class Search extends React.Component {
 					</label>
 					<label>
 						<input
-							class='with-gap'
+							className='with-gap'
 							name='type'
 							type='radio'
 							data-type='series'

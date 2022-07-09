@@ -5,6 +5,9 @@
 	display: inline-block;
 	margin: 0 2rem;
 }
+.card .card-image img {
+	height: 446px;
+}
 .header {
 	padding: 0 2rem;
 }

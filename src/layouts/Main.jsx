@@ -6,6 +6,7 @@ import { Preloader } from '../components/utils/Preloader';
 class Main extends React.Component {
 	state = {
 		movies: [],
+		loading: true,
 	};
 	componentDidMount() {
 		fetch('https://www.omdbapi.com/?apikey=e2b49d76&s=matrix')
@@ -14,11 +15,13 @@ class Main extends React.Component {
 				setTimeout(() => {
 					this.setState({
 						movies: data.Search,
+						loading: false,
 					});
 				}, 400);
 			});
 	}
 	searchMovies = (str, type) => {
+		this.setState({ loading: true });
 		type = type !== 'all' ? '&type=' + type : '&type=';
 		str = str !== '' ? '&s=' + str : '&s=matrix';
 
@@ -29,6 +32,7 @@ class Main extends React.Component {
 				setTimeout(() => {
 					this.setState({
 						movies: data.Search,
+						loading: false,
 					});
 				}, 400);
 			});
@@ -37,7 +41,7 @@ class Main extends React.Component {
 		return (
 			<div className='container'>
 				<Search searchMovies={this.searchMovies} />
-				{this.state.movies.length > 0 ? (
+				{!this.state.loading ? (
 					<Movies movies={this.state.movies} />
 				) : (
 					<Preloader />
