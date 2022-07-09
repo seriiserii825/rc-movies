@@ -4,14 +4,24 @@ class Search extends React.Component {
 	state = {
 		search: '',
 		sticky: '',
+		type: 'all',
 	};
 
 	handleKey(e) {
 		if (e.key === 'Enter') {
-			this.props.searchMovies(this.state.search);
+			this.props.searchMovies(this.state.search, this.state.type);
 			this.setState({ sticky: this.state.search });
-			this.setState({ search: '' });
 		}
+	}
+
+	handleType(e) {
+		this.setState(
+			() => ({ type: e.target.dataset.type }),
+			() => {
+				this.props.searchMovies(this.state.search, this.state.type);
+			}
+		);
+		this.props.searchMovies(this.state.search, this.state.type);
 	}
 
 	render() {
@@ -34,10 +44,48 @@ class Search extends React.Component {
 					<button
 						className='btn col s2'
 						onClick={() =>
-							this.props.searchMovies(this.state.search)
+							this.props.searchMovies(
+								this.state.search,
+								this.state.type
+							)
 						}>
 						Search
 					</button>
+				</div>
+				<div className='row filter'>
+					<label>
+						<input
+							class='with-gap'
+							name='type'
+							type='radio'
+							data-type='all'
+							onChange={(e) => this.handleType(e)}
+							checked={this.state.type === 'all'}
+						/>
+						<span>All</span>
+					</label>
+					<label>
+						<input
+							class='with-gap'
+							name='type'
+							type='radio'
+							data-type='movie'
+							onChange={(e) => this.handleType(e)}
+							checked={this.state.type === 'movie'}
+						/>
+						<span>Movie</span>
+					</label>
+					<label>
+						<input
+							class='with-gap'
+							name='type'
+							type='radio'
+							data-type='series'
+							onChange={(e) => this.handleType(e)}
+							checked={this.state.type === 'series'}
+						/>
+						<span>Series</span>
+					</label>
 				</div>
 			</div>
 		);

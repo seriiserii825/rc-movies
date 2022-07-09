@@ -1,6 +1,10 @@
 .App {
 	text-align: center;
 }
+.filter label {
+	display: inline-block;
+	margin: 0 2rem;
+}
 .header {
 	padding: 0 2rem;
 }

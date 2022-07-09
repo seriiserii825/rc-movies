@@ -18,8 +18,11 @@ class Main extends React.Component {
 				}, 400);
 			});
 	}
-	searchMovies = (str) => {
-		fetch(`https://www.omdbapi.com/?apikey=e2b49d76&s=${str}`)
+	searchMovies = (str, type) => {
+		type = type !== 'all' ? '&type=' + type : '&type=';
+		str = str !== '' ? '&s=' + str : '&s=matrix';
+
+		fetch(`https://www.omdbapi.com/?apikey=e2b49d76&s=${str}${type}`)
 			.then((response) => response.json())
 			.then((data) => {
 				this.setState({ movies: [] });
