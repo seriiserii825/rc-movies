@@ -17,11 +17,8 @@ class Search extends React.Component {
 	handleType(e) {
 		this.setState(
 			() => ({ type: e.target.dataset.type }),
-			() => {
-				this.props.searchMovies(this.state.search, this.state.type);
-			}
+			() => this.props.searchMovies(this.state.search, this.state.type)
 		);
-		this.props.searchMovies(this.state.search, this.state.type);
 	}
 
 	render() {

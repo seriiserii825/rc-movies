@@ -4,18 +4,23 @@ import { Search } from '../components/movies/Search';
 import { Preloader } from '../components/utils/Preloader';
 
 class Main extends React.Component {
+	APP_KEY = process.env.REACT_APP_API_KEY;
+
 	state = {
 		movies: [],
 		loading: true,
 	};
+
 	componentDidMount() {
-		fetch('https://www.omdbapi.com/?apikey=e2b49d76&s=matrix')
+		fetch(`https://www.omdbapi.com/?apikey=${this.APP_KEY}&s=matrix`)
 			.then((response) => response.json())
 			.then((data) => {
+				this.setState({
+					loading: false,
+				});
 				setTimeout(() => {
 					this.setState({
 						movies: data.Search,
-						loading: false,
 					});
 				}, 400);
 			});
@@ -25,16 +30,15 @@ class Main extends React.Component {
 		type = type !== 'all' ? '&type=' + type : '&type=';
 		str = str !== '' ? '&s=' + str : '&s=matrix';
 
-		fetch(`https://www.omdbapi.com/?apikey=e2b49d76&s=${str}${type}`)
+		fetch(`https://www.omdbapi.com/?apikey=${this.APP_KEY}&s=${str}${type}`)
 			.then((response) => response.json())
 			.then((data) => {
-				this.setState({ movies: [] });
-				setTimeout(() => {
-					this.setState({
-						movies: data.Search,
-						loading: false,
-					});
-				}, 400);
+				this.setState({
+					loading: false,
+				});
+				this.setState({
+					movies: data.Search,
+				});
 			});
 	};
 	render() {
